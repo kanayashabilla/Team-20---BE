@@ -1,0 +1,71 @@
+GET http://localhost:5000/product
+
+###
+GET http://localhost:5000/product/1
+
+###
+POST http://localhost:5000/product
+Content-Type: application/json
+
+{
+    "name": "Bionico Fruit salad",
+    "price": 19.99
+}
+
+###
+PATCH  http://localhost:5000/product/2
+Content-Type: application/json
+
+{
+    "name": "Bionico Fruit salad",
+    "price": 19.99
+}
+
+###
+DELETE http://localhost:5000/product/3
+
+--------------------------------------------------------------------------------------------------------------------------------------
+.env (sesuaikan dengan masing)
+PORT=3000
+DATABASE_NAME=orgfresh_db
+DATABASE_USERNAME=root
+DATABASE_PASSWORD=Bogor1969
+DATABASE_HOST=localhost
+DATABASE_PORT=3306
+
+###
+POST addToOrder http://localhost:5000/add-to-order
+
+{
+    "name": "Naya",
+    "phone": "085772415806",
+    "address": "Tapos, Depok"
+}
+
+###
+GET viewOrderById http://localhost:3000/view-order/1
+
+###
+PUT updateOrder http://localhost:3000/update-order/1
+
+{
+    "name": "Ka",
+    "phone": "0857",
+    "address": "Jakarta"
+}
+
+###
+GET viewOrderDetail http://localhost:3000/view-order-detail/1
+
+###
+POST adadOrderDetail http://localhost:3000/add-order-detail
+{
+    "orderId": "1",
+    "productId": "3",
+    "quantity": "5"
+}
+
+###
+PUT updateOrderDetail http://localhost:3000//update-order-detail/1 --data belum ke update
+
+

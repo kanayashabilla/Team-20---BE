@@ -1,30 +1,30 @@
-import express from "express";
-import db from "./config/database.js";
-import userRoute from "./routes/userRoute.js";
+import express from 'express';
+import cors from 'cors';
+import productRoute from "./routes/productRoute.js";
+import orderRoute from "./routes/orderRoute.js";
+import orderDetailRoute from "./routes/orderDetailRoutes.js";
 
 const app = express();
-const port = 3000;
-
 app.use(express.json());
+app.use(cors());
 
-//Routes
-app.get('/', (req, res) => {
-  res.send('Hello World!')
+// route
+app.use(productRoute);
+app.use(orderRoute);
+app.use(orderDetailRoute);
+
+app.get("/", (req,res) =>{
+  res.send("Hello we are group 20 team J section medan")
 });
 
-app.use(userRoute);
+///database
+import db from './config/database.js';
+db.sync({ force: false }).then(() => {
+    console.log('Database synchronized.');
+  });
 
-
-//create connection
-db.sync({alter: true})
-.then(() => {console.log('Database connected')
-
-//server port
-app.listen(port, () => {
-  console.log(`server is running on port ${port}`)
-});
-
-})
-.catch(err => {
-    console.log(`unable to connect db: ${err}`);
+// port
+const port = process.env.PORT || 5000;
+app.listen(port, ()=>{
+    console.log(`server up and running on port ${port}.`)
 });
